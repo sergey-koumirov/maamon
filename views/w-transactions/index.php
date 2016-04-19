@@ -20,7 +20,7 @@
             <td><?= $model->ref_type() ?></td>
             <td><?= $model->owner_name1 ?></td>
             <td><?= $model->owner_name2 ?></td>
-            <td><?= $model->amount ?></td>
+            <td><?= number_format($model->amount,2) ?></td>
             <td><?= $model->reason ?></td>
         </tr>
 
