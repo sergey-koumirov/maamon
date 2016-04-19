@@ -37,7 +37,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Wallets', 'url' => ['/wallets/index']],
-            ['label' => 'Transactions', 'url' => ['/transactions/index']],
+            ['label' => 'Transactions', 'url' => ['/w-transactions/index']],
             ['label' => 'API Keys', 'url' => ['/api-keys/index']],
             ['label' => 'Users', 'url' => ['/users/index']],
             Yii::$app->user->isGuest ? (

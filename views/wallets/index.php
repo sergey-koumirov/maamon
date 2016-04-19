@@ -7,7 +7,7 @@
     <ul>
         <?php foreach($wallets as $wallet){ ?>
 
-        <li><?= $wallet->description ?></li>
+        <li><?= $wallet->accountKey ?>: <?= $wallet->description ?></li>
 
         <?php } ?>
         
