@@ -7,7 +7,7 @@ use yii\web\Controller;
 use Pheal\Pheal;
 use Pheal\Core\Config;
 
-class WalletsController extends Controller{
+class WalletsController extends BaseController{
     public function actionIndex(){
         
         $keyID = 3571701;
