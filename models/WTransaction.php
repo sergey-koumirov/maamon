@@ -31,9 +31,11 @@ class WTransaction extends ActiveRecord{
             case 37:	
                 return 'Corp Account Withdrawal';
             case 42:	
-                return 'Market';    
+                return 'Market Transaction (Buys)';    
             case 46:	
                 return 'Broker Fee';
+            case 54:	
+                return 'Secure Commerce Commission';
             case 56:	
                 return 'Manufacturing';
             case 63: 
@@ -52,7 +54,7 @@ class WTransaction extends ActiveRecord{
             case 97:	
                 return 'Customs Office Export Duty';
             default:
-                return '---';
+                return '['.$this->ref_type_id.']';
         }
         
     }

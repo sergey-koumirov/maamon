@@ -12,7 +12,7 @@ class WTransactionsController extends BaseController{
         $query = WTransaction::find();
         $countQuery = clone $query;
         
-        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize'=>100 ]);
         
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)

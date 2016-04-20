@@ -8,6 +8,7 @@
 <a href="<?= Url::to(['w-transactions/download-new']) ?>" class="btn btn-primary">Download New</a>
 
 <div class="wallets-transactions-index">
+    <?php echo LinkPager::widget(['pagination' => $pages]); ?>
     
     <table class="table">
         
@@ -29,7 +30,6 @@
     </table>
     
     
-    <?php echo LinkPager::widget(['pagination' => $pages]); ?>
 
 </div>
 
