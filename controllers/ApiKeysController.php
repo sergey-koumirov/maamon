@@ -47,10 +47,6 @@ class ApiKeysController extends BaseController{
         } else {
             return $this->render('new', ['model'=>$model]);
         }
-        
-        return $this->render('new', [
-             'model' => $model
-        ]);
     }
     
     public function actionUpdate($id){
@@ -62,10 +58,6 @@ class ApiKeysController extends BaseController{
         } else {
             return $this->render('show', ['model'=>$model]);
         }
-        
-        return $this->render('new', [
-             'model' => $model
-        ]);
     }
     
     public function actionDelete($id){
