@@ -1,10 +1,14 @@
 html,
 body {
     height: 100%;
+}
+
+.navbar {
     background-image: url("/logo.png");
-    background-position: right 45px;
+    background-position: left top;
     background-repeat: no-repeat;
-    background-color: #FFFFFF;
+    min-height: 64px;
+    margin-bottom: 12px;
 }
 
 .wrap {
@@ -99,5 +103,5 @@ a.desc:after {
 }
 
 .api-selector{
-    margin-top: 8px;
+    margin-top: 15px;
 }
