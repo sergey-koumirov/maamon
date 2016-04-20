@@ -17,13 +17,13 @@ class API{
     public static function Wallets($api_key_id){
         if($api_key_id != null){
             if( count(static::$wallets) == 0 ){
-            static::init();
-            $api = ApiKey::findOne($api_key_id);
-            $pheal = new Pheal($api->key_id, $api->v_code, "corp");
-            $info = $pheal->CorporationSheet();
-            foreach($info->walletDivisions as $wallet){
-                static::$wallets[$wallet->accountKey] = $wallet->description;
-            } 
+                static::init();
+                $api = ApiKey::findOne($api_key_id);
+                $pheal = new Pheal($api->key_id, $api->v_code, "corp");
+                $info = $pheal->CorporationSheet();
+                foreach($info->walletDivisions as $wallet){
+                    static::$wallets[$wallet->accountKey] = $wallet->description;
+                } 
             }
             return static::$wallets;
         }else{

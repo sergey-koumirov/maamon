@@ -19,9 +19,10 @@
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.y:.2f}',
+                        format: '<b>{point.name}</b>: {point.y:,.2f}',
                         style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}
-                    }
+                    },
+                    size: "75%"
                 }
             },
             series: [{
@@ -50,9 +51,10 @@
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-                        format: '<b>{point.name}</b>: {point.y:.2f}',
+                        format: '<b>{point.name}</b>: {point.y:,.2f}',
                         style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}
-                    }
+                    },
+                    size: "75%"
                 }
             },
             series: [{
@@ -96,8 +98,8 @@
             </tr>    
             <?php } ?>
             <tr>
-                <td class="text-right">Total:</td>
-                <td class="text-right"><?= number_format($itotal,2) ?></td>
+                <th class="text-right">Total:</th>
+                <th class="text-right"><?= number_format($itotal,2) ?></th>
             </tr>
         </table>    
     </div>
@@ -110,8 +112,8 @@
             </tr>    
             <?php } ?>
             <tr>
-                <td class="text-right">Total:</td>
-                <td class="text-right"><?= number_format($etotal,2) ?></td>
+                <th class="text-right">Total:</th>
+                <th class="text-right"><?= number_format($etotal,2) ?></th>
             </tr>
         </table>  
     </div>
