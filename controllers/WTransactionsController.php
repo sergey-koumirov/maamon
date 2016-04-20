@@ -16,6 +16,7 @@ class WTransactionsController extends BaseController{
         
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
+            ->orderBy('date desc')
             ->all();
 
         return $this->render('index', [

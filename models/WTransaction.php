@@ -30,6 +30,8 @@ class WTransaction extends ActiveRecord{
                 return 'CONCORD Spam Prevention Act (CSPA)';
             case 37:	
                 return 'Corp Account Withdrawal';
+            case 42:	
+                return 'Market';    
             case 46:	
                 return 'Broker Fee';
             case 56:	
