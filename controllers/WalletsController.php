@@ -12,18 +12,15 @@ class WalletsController extends BaseController{
         $month = \Yii::$app->getRequest()->getQueryParam('m');
         if(empty($month)){ $month = date("Y-m"); }  
          
-//        echo('---');
-//        print_r(\Yii::$app->getRequest()->getQueryParams());
-//        exit;
-        
         $connection = \Yii::$app->getDb();
         $command = $connection->createCommand(
             "select DATE_FORMAT(date,'%Y-%m'), ref_type_id, sum(amount) as amount 
                 from maamon_dev.wtransactions
                 where DATE_FORMAT(date,'%Y-%m') = :month
+                  and api_key_id = :api_key_id
                 group by DATE_FORMAT(date,'%Y-%m'), ref_type_id
                 order by sum(amount)", 
-            [':month' => $month ]
+            [':month' => $month, ':api_key_id'=>\Yii::$app->user->getIdentity()->api_key_id ]
         );
         $result = $command->queryAll();
         
