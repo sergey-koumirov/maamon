@@ -38,13 +38,13 @@ class API{
         
         $api = ApiKey::findOne($api_key_id);
         
-        $pheal = new Pheal($api->kei_id, $api->v_code, "corp");
+        $pheal = new Pheal($api->key_id, $api->v_code, "corp");
         $info = $pheal->CorporationSheet();        
         
         foreach($info->walletDivisions as $wallet){
             if($wallet->accountKey != 10000){
                 $params = [
-                    'keyID' => $api->kei_id,
+                    'keyID' => $api->key_id,
                     'vCode' => $api->v_code,
                     'accountKey' => $wallet->accountKey,
                     //'fromID' => ,

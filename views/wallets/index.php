@@ -74,7 +74,7 @@
     <h4>
         &lt;&lt;&lt;
         <a href="<?= Url::to(['wallets/index', 'm'=>$pmonth]) ?>"><?= $pmonth ?></a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;|&nbsp;&nbsp;
         <a href="<?= Url::to(['wallets/index', 'm'=>$nmonth]) ?>"><?= $nmonth ?></a>
         &gt;&gt;&gt;
     </h4>
