@@ -9,8 +9,8 @@ class WTransaction extends ActiveRecord{
         return 'wtransactions';
     }
     
-    public function wallet(){
-        return API::Wallets()[$this->wallet_id];
+    public function wallet($api_key_id){
+        return API::Wallets($api_key_id)[$this->wallet_id];
         
     }
     
@@ -65,6 +65,7 @@ class WTransaction extends ActiveRecord{
         if($model == null){
             
             $model = new static;
+            $model->api_key_id  = \Yii::$app->user->getIdentity()->api_key_id;
             $model->ref_id      = $record->refID;
             $model->wallet_id   = $wallet_id;
             $model->date        = $record->date;

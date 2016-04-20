@@ -77,6 +77,17 @@ class UsersController extends BaseController{
         return $this->redirect( ['users/index'] );
     }
     
+    public function actionChangeApiKey(){
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $user = \Yii::$app->user->getIdentity();
+        $post = \Yii::$app->request->post();
+
+        $user->api_key_id = $post['api_key_id'];
+        $user->save();
+
+        return ['message'=>'ok'];
+    }
+    
     
 }
 

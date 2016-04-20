@@ -9,7 +9,7 @@ use app\models\API;
 class WTransactionsController extends BaseController{
     
     public function actionIndex(){
-        $query = WTransaction::find();
+        $query = WTransaction::find()->where(['api_key_id' => \Yii::$app->user->getIdentity()->api_key_id]);
         $countQuery = clone $query;
         
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize'=>100 ]);
@@ -26,7 +26,9 @@ class WTransactionsController extends BaseController{
     }
     
     public function actionDownloadNew(){
-        API::NewWTransactions();
+        if(\Yii::$app->user->getIdentity()->api_key_id!=null){
+            API::NewWTransactions(\Yii::$app->user->getIdentity()->api_key_id);
+        }
         return $this->redirect( ['w-transactions/index'] );
     }
 }

@@ -1,6 +1,10 @@
 html,
 body {
     height: 100%;
+    background-image: url("/logo.png");
+    background-position: right 45px;
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
 }
 
 .wrap {
@@ -91,5 +95,9 @@ a.desc:after {
 }
 
 .navbar-nav li button{
+    margin-top: 8px;
+}
+
+.api-selector{
     margin-top: 8px;
 }

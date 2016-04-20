@@ -4,10 +4,12 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\ApiKey;
 
 AppAsset::register($this);
 ?>
@@ -18,7 +20,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>Maamon</title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -32,8 +34,18 @@ AppAsset::register($this);
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
-    ]);
-    echo Nav::widget([
+    ]);?>
+    
+    <div class="col-md-3 api-selector" data-change-url="<?= Url::to(['users/change-api-key']) ?>">
+        <select class="form-control">
+            <option value="">---</option>
+            <?php foreach(ApiKey::find()->all() as $api){ ?>
+            <option value="<?= $api->id ?>" <?= $api->id == Yii::$app->user->getIdentity()->api_key_id ? 'selected' : '' ?> ><?= $api->name ?></option>
+            <?php } ?>
+        </select>
+    </div>
+    
+    <?php echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Wallets', 'url' => ['/wallets/index']],
@@ -66,6 +78,7 @@ AppAsset::register($this);
 </div>
 
 <?php $this->endBody() ?>
+<script src="/js/main.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>

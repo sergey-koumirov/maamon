@@ -15,7 +15,7 @@
         <?php foreach($models as $model){ ?>
 
         <tr>
-            <td><?= $model->wallet() ?></td>
+            <td><?= $model->wallet(\Yii::$app->user->getIdentity()->api_key_id) ?></td>
             <td><?= $model->ref_id ?></td>
             <td><?= $model->date ?></td>
             <td><?= $model->ref_type() ?></td>

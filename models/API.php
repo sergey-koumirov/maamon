@@ -13,41 +13,39 @@ class API{
     private static function init(){
         Config::getInstance()->cache = new \Pheal\Cache\FileStorage('/tmp/');
     }
-    
-    private static function keyID(){
-        return 3571701;
-    }
-    
-    private static function vCode(){
-        return "pQrzK46fJ4efOOaySPKBlhGllJepWobgH4xjMhpJXVeQ1biHf6T1QXG5eRmnb4DF";
-    }
-    
-    
-    public static function Wallets(){
-        if( count(static::$wallets) == 0 ){
+        
+    public static function Wallets($api_key_id){
+        if($api_key_id != null){
+            if( count(static::$wallets) == 0 ){
             static::init();
-            $pheal = new Pheal(static::keyID(), static::vCode(), "corp");
+            $api = ApiKey::findOne($api_key_id);
+            $pheal = new Pheal($api->key_id, $api->v_code, "corp");
             $info = $pheal->CorporationSheet();
             foreach($info->walletDivisions as $wallet){
                 static::$wallets[$wallet->accountKey] = $wallet->description;
             } 
+            }
+            return static::$wallets;
+        }else{
+            return [];
         }
-        return static::$wallets;
+        
+        
     }
     
-    public static function NewWTransactions(){
+    public static function NewWTransactions($api_key_id){
         static::init();
         
-        //$corporationID = 357642502;
+        $api = ApiKey::findOne($api_key_id);
         
-        $pheal = new Pheal(static::keyID(), static::vCode(), "corp");
+        $pheal = new Pheal($api->kei_id, $api->v_code, "corp");
         $info = $pheal->CorporationSheet();        
         
         foreach($info->walletDivisions as $wallet){
             if($wallet->accountKey != 10000){
                 $params = [
-                    'keyID' => static::keyID(),
-                    'vCode' => static::vCode(),
+                    'keyID' => $api->kei_id,
+                    'vCode' => $api->v_code,
                     'accountKey' => $wallet->accountKey,
                     //'fromID' => ,
                     'rowCount' => 1000
