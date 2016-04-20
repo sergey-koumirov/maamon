@@ -10,12 +10,16 @@ class WTransaction extends ActiveRecord{
     }
     
     public function wallet($api_key_id){
-        return API::Wallets($api_key_id)[$this->wallet_id];
-        
+        return API::Wallets($api_key_id)[$this->wallet_id];        
     }
     
     public function ref_type(){
-        switch($this->ref_type_id){
+        return static::ref_type_by_id($this->ref_type_id);
+    }
+    
+    
+    public static function ref_type_by_id($ref_type_id){
+        switch($ref_type_id){
             case 1:
                 return 'Player Trading';
             case 2:
@@ -54,7 +58,7 @@ class WTransaction extends ActiveRecord{
             case 97:	
                 return 'Customs Office Export Duty';
             default:
-                return '['.$this->ref_type_id.']';
+                return '['.$ref_type_id.']';
         }
         
     }

@@ -22,6 +22,8 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title>Maamon</title>
     <?php $this->head() ?>
+    <script src="/js/main.js"></script>
+    <script src="/js/highcharts.js"></script>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -78,7 +80,6 @@ AppAsset::register($this);
 </div>
 
 <?php $this->endBody() ?>
-<script src="/js/main.js"></script>
 </body>
 </html>
 <?php $this->endPage() ?>
