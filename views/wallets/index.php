@@ -11,7 +11,7 @@
                 plotShadow: false,
                 type: 'pie'
             },
-            title: { text: 'Income: <?= $month ?>' },
+            title: { text: 'Income: <?= $month ?>', style: {"color": "#00A000"} },
             tooltip: { pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
             plotOptions: {
                 pie: {
@@ -44,7 +44,7 @@
                 plotShadow: false,
                 type: 'pie'
             },
-            title: { text: 'Expense: <?= $month ?>' },
+            title: { text: 'Expense: <?= $month ?>', style: {"color": "#cc0000"} },
             tooltip: { pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
             plotOptions: {
                 pie: {
@@ -75,13 +75,12 @@
 <h4>Wallets:</h4>
 
 <div class="row text-center">
-    <h4>
-        &lt;&lt;&lt;
-        <a href="<?= Url::to(['wallets/index', 'm'=>$pmonth]) ?>"><?= $pmonth ?></a>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="<?= Url::to(['wallets/index', 'm'=>$nmonth]) ?>"><?= $nmonth ?></a>
-        &gt;&gt;&gt;
-    </h4>
+    <div class="col-md-6 text-left">
+        <h4>&lt;&lt;&nbsp;&nbsp;<a href="<?= Url::to(['wallets/index', 'm'=>$pmonth]) ?>"><?= $pmonth ?></a></h4>
+    </div>
+    <div class="col-md-6 text-right">
+        <h4><a href="<?= Url::to(['wallets/index', 'm'=>$nmonth]) ?>"><?= $nmonth ?></a>&nbsp;&nbsp;&gt;&gt;</h4>
+    </div>
 </div>
 
 <div class="row">
