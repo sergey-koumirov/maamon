@@ -22,7 +22,8 @@
                         format: '<b>{point.name}</b>: {point.y:,.2f}',
                         style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}
                     },
-                    size: "75%"
+                    size: "75%",
+                    animation: false
                 }
             },
             series: [{
@@ -54,7 +55,8 @@
                         format: '<b>{point.name}</b>: {point.y:,.2f}',
                         style: {color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'}
                     },
-                    size: "75%"
+                    size: "75%",
+                    animation: false
                 }
             },
             series: [{
