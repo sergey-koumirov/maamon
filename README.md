@@ -8,3 +8,5 @@ cd maamon
 
 get new transactions
 ./yii trans
+
+mysqldump -u root -p maamon_dev --no-data > maamon.sql
