@@ -36,6 +36,7 @@ AppAsset::register($this);
         ],
     ]);?>
     
+    <?php if (!Yii::$app->user->isGuest) {?>
     <div class="col-md-3 api-selector" data-change-url="<?= Url::to(['users/change-api-key']) ?>">
         <select class="form-control">
             <option value="">---</option>
@@ -44,30 +45,44 @@ AppAsset::register($this);
             <?php } ?>
         </select>
     </div>
+    <?php } ?>
     
-    <?php echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Wallets', 'url' => ['/wallets/index']],
-            ['label' => 'Transactions', 'url' => ['/w-transactions/index']],
-            ['label' => 'API Keys', 'url' => ['/api-keys/index']],
-            ['label' => 'Users', 'url' => ['/users/index']],
-            Yii::$app->user->isGuest ? (
+    
+    <?php if (Yii::$app->user->isGuest) {?>
+    
+        <?php echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => [
                 ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link']
+            ],
+        ]);
+        NavBar::end();
+        ?>
+    
+    <?php } else { ?>
+        <?php echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => [
+                ['label' => 'Wallets', 'url' => ['/wallets/index']],
+                ['label' => 'Transactions', 'url' => ['/w-transactions/index']],
+                ['label' => 'API Keys', 'url' => ['/api-keys/index']],
+                ['label' => 'Users', 'url' => ['/users/index']],
+                (
+                    '<li>'
+                    . Html::beginForm(['/site/logout'], 'post')
+                    . Html::submitButton(
+                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'btn btn-link']
+                    )
+                    . Html::endForm()
+                    . '</li>'
                 )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
+            ],
+        ]);
+        NavBar::end();
+        ?>
+    <?php } ?>
+    
 
     <div class="container">
         <?= Breadcrumbs::widget([
