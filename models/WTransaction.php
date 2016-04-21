@@ -10,7 +10,12 @@ class WTransaction extends ActiveRecord{
     }
     
     public function wallet($api_key_id){
-        return API::Wallets($api_key_id)[$this->wallet_id];        
+        $wallets = API::Wallets($api_key_id);
+        if(array_key_exists($this->wallet_id,$wallets)){
+            return $wallets[$this->wallet_id];
+        }else{
+            return null;
+        }
     }
     
     public function ref_type(){
