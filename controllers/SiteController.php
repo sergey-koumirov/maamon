@@ -43,8 +43,7 @@ class SiteController extends BaseController{
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        return $this->goHome();
+        return $this->redirect( ['/'] );
     }
 
 }

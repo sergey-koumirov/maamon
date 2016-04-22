@@ -20,10 +20,10 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title>Maamon</title>
+    <title>Maamon <?= $_SERVER['SERVER_NAME'] ?></title>
     <?php $this->head() ?>
-    <script src="/js/main.js"></script>
-    <script src="/js/highcharts.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/highcharts.js"></script>
 </head>
 <body>
 <?php $this->beginBody() ?>

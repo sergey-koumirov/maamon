@@ -4,7 +4,7 @@ body {
 }
 
 .navbar {
-    background-image: url("/logo.png");
+    background-image: url("logo.png");
     background-position: left top;
     background-repeat: no-repeat;
     min-height: 64px;
