@@ -35,6 +35,10 @@ class WTransaction extends ActiveRecord{
                 return 'Bounty Prize';
             case 19:	
                 return 'Insurance';
+            case 34:	
+                return 'Agent Mission Time Bonus Reward';
+            case 33:	
+                return 'Agent Mission Reward';
             case 35:	
                 return 'CONCORD Spam Prevention Act (CSPA)';
             case 37:	
